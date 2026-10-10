@@ -1,0 +1,12 @@
+
+{
+  "name": "Pritam & Dipika Wedding Invitation",
+  "short_name": "Pritam & Dipika",
+  "description": "Wedding reception invitation for Pritam and Dipika",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#250910",
+  "theme_color": "#641522",
+  "orientation": "portrait"
+}
