@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2b1c20">
+<title>Pritam & Dipika — Together Forever</title>
+<style>
+:root{--ink:#2b1c20;--wine:#74383f;--rose:#e78a8c;--gold:#d8b58b;--cream:#fff5ec;--muted:#ead8ce}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Georgia,"Times New Roman",serif;background:var(--ink);color:var(--cream)}
+button,a{-webkit-tap-highlight-color:transparent}.page{display:none;min-height:100vh;min-height:100svh;position:relative;overflow:hidden;align-items:center;justify-content:center;text-align:center;padding:80px 20px 34px}
+.page.active{display:flex;animation:arrive .55s ease both}@keyframes arrive{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.welcome{background:linear-gradient(180deg,rgba(24,13,16,.22),rgba(24,13,16,.78)),url("images/couple.jpg") center 35%/cover no-repeat,#52343a}
+.welcome:after{content:"";position:absolute;inset:14px;border:1px solid rgba(255,230,206,.72);border-radius:4px;pointer-events:none}
+.content{position:relative;z-index:1;width:min(100%,760px)}.brand{letter-spacing:.32em;font:600 .68rem Arial,sans-serif;text-transform:uppercase;color:var(--gold)}.monogram{font-size:1.45rem;letter-spacing:.22em;margin-bottom:8px}.heart{color:var(--rose);font-size:1.2rem;margin:14px 0}.script{font-style:italic;font-weight:400;font-size:clamp(2.3rem,7vw,4.7rem);line-height:1.04;margin:18px 0}.names{font-size:clamp(2.6rem,9vw,5.8rem);letter-spacing:.12em;line-height:1.12;font-weight:400;margin:12px 0;text-shadow:0 3px 24px #0005}.subtitle{font-size:clamp(1rem,3vw,1.2rem);line-height:1.7;color:#fff0e5}.welcome .subtitle{max-width:430px;margin:20px auto}.rule{width:130px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:20px auto}
+.panel{background:linear-gradient(145deg,rgba(67,39,43,.98),rgba(33,20,23,.98));border:1px solid rgba(216,181,139,.62);border-radius:28px;padding:clamp(25px,5vw,52px);box-shadow:0 22px 90px #0005}
+.countdown-page{background:radial-gradient(ellipse at top,#80504d 0,#3a2529 45%,#201519 100%)}
+.venue-page{background:linear-gradient(135deg,#fff0e5,#f0d6c7 55%,#e8c7b7);color:var(--ink)}
+.venue-page .panel{background:rgba(255,248,241,.88);border-color:#d5a88b;color:var(--ink);box-shadow:0 20px 65px #482b2b20}
+.venue-page .brand,.venue-page .heart{color:var(--wine)}.venue-page .script{color:var(--wine)}.venue-page .subtitle{color:#60484a}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;margin:10px 5px 0;padding:14px 24px;min-height:49px;border-radius:999px;background:linear-gradient(135deg,#f19a98,#c95e68);border:1px solid #ffd4bd;color:white;text-decoration:none;text-transform:uppercase;letter-spacing:.12em;font:700 .73rem Arial,sans-serif;cursor:pointer;box-shadow:0 6px 24px #8b3f4938;transition:transform .2s,filter .2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}.btn.ghost{background:transparent;color:var(--cream);box-shadow:none;border-color:#e5c8b4}.venue-page .btn.ghost{color:var(--wine);border-color:#c58c83}
+.countdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:30px 0}
+.time{padding:18px 5px 15px;border:1px solid rgba(239,195,167,.75);border-radius:70px 70px 16px 16px;background:linear-gradient(180deg,#ffffff0d,#ffffff03)}
+.num{display:block;color:#ffe5cf;font-size:clamp(1.9rem,6vw,3.5rem);font-weight:400;line-height:1.2}.unit{display:block;margin-top:8px;font:600 .62rem Arial,sans-serif;letter-spacing:.12em;color:var(--muted)}
+.date{color:#f0c99c;font-size:clamp(1.15rem,3.6vw,1.7rem);letter-spacing:.04em}.detail-list{max-width:510px;margin:25px auto;text-align:left;display:grid;gap:20px}.detail{display:grid;grid-template-columns:32px 1fr;gap:12px;line-height:1.6}.detail .icon{font-size:1.3rem;color:var(--wine)}.detail strong{display:block;font:700 .7rem Arial,sans-serif;text-transform:uppercase;letter-spacing:.14em;color:var(--wine);margin-bottom:4px}.detail p{margin:0}.venue-photo{width:100%;max-height:230px;object-fit:cover;border-radius:20px;border:1px solid #d3a68b;margin:12px 0}
+.nav{position:absolute;z-index:5;top:20px;left:0;right:0;display:flex;justify-content:center;gap:8px;padding:0 10px}.nav button{border:1px solid #e7c9b2aa;border-radius:999px;background:#27161bb8;color:#fff4ec;padding:9px 14px;font:600 .65rem Arial,sans-serif;letter-spacing:.1em;cursor:pointer}.nav button[aria-current=page]{background:#f0c5ad;color:#41272b;border-color:#f0c5ad}
+.venue-page .nav button{background:#fff9f0dd;color:#58343a;border-color:#d2a18d}.venue-page .nav button[aria-current=page]{background:#7d3c46;color:#fff}
+.footer{margin-top:24px;font:600 .63rem Arial,sans-serif;letter-spacing:.16em;color:#d7b48f}.venue-page .footer{color:#87535a}
+@media(max-width:480px){.page{padding:76px 15px 25px}.welcome{padding-top:45px}.nav{top:12px}.nav button{padding:8px 10px;font-size:.59rem}.countdown{gap:5px}.time{padding:15px 2px 12px}.unit{font-size:.51rem;letter-spacing:.05em}.panel{border-radius:22px}.names{letter-spacing:.07em}}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Wedding pages">
+<button data-page="welcome" aria-current="page">WELCOME</button><button data-page="countdown">COUNTDOWN</button><button data-page="venue">VENUE</button>
+</nav>
+<main>
+<section class="page welcome active" id="welcome">
+<div class="content">
+<div class="monogram">P <span style="color:var(--rose)">|</span> D</div><div class="brand">Together Forever</div><div class="heart">♥</div>
+<div class="script">Welcome to</div><h1 class="names">PRITAM<br><span style="font-style:italic;color:#f4a3a0">&amp;</span><br>DIPIKA</h1>
+<div class="rule"></div><p class="subtitle">A beautiful beginning to our forever.<br>We would love to celebrate this special day with you.</p>
+<button class="btn" data-next="countdown">Let's begin <span>›</span></button>
+</div></section>
+<section class="page countdown-page" id="countdown">
+<div class="content panel"><div class="monogram">P <span style="color:var(--rose)">|</span> D</div><div class="brand">The countdown</div>
+<div class="script">Our Special Day</div><div class="heart">♡ ─────── ♡</div>
+<p class="subtitle">We can't wait to celebrate<br>this beautiful journey with you.</p>
+<div class="countdown" aria-live="polite">
+<div class="time"><span class="num" id="days">--</span><span class="unit">DAYS</span></div><div class="time"><span class="num" id="hours">--</span><span class="unit">HOURS</span></div><div class="time"><span class="num" id="minutes">--</span><span class="unit">MINUTES</span></div><div class="time"><span class="num" id="seconds">--</span><span class="unit">SECONDS</span></div>
+</div>
+<div class="brand">Our day</div><p class="date" id="dateDisplay">25 November 2026</p><p class="subtitle" id="timeDisplay">At 7:00 PM</p>
+<button class="btn" data-next="venue">Venue & directions ›</button><button class="btn ghost" data-next="welcome">Back</button>
+</div></section>
+<section class="page venue-page" id="venue">
+<div class="content panel"><div class="monogram">P <span style="color:var(--rose)">|</span> D</div><div class="brand">Venue details</div>
+<div class="script">Let's Celebrate Together</div><div class="heart">♡ ─────── ♡</div>
+<img class="venue-photo" src="images/venue.jpg" alt="Wedding venue" onerror="this.style.display='none'">
+<div class="detail-list">
+<div class="detail"><div class="icon">⌖</div><div><strong>Venue</strong><p id="venueName">Railway Officer Club, Sealdah</p></div></div>
+<div class="detail"><div class="icon">✧</div><div><strong>Address</strong><p id="venueAddress">Kolkata, West Bengal, India</p></div></div>
+<div class="detail"><div class="icon">◷</div><div><strong>Date & time</strong><p id="venueDate">25 November 2026 · 7:00 PM</p></div></div>
+</div>
+<a class="btn" id="mapLink" href="https://www.google.com/maps/search/?api=1&query=Railway+Officer+Club%2C+Sealdah%2C+Kolkata" target="_blank" rel="noopener noreferrer">⌖ Get directions ↗</a>
+<button class="btn ghost" data-next="countdown">Back to countdown</button><div class="footer">YOUR PRESENCE WILL MAKE OUR DAY MORE SPECIAL</div>
+</div></section>
+</main>
+<script>
+/* Edit these values with your final wedding information. India time uses +05:30. */
+const WEDDING={
+  dateISO:"2026-11-25T19:00:00+05:30",
+  dateDisplay:"25 November 2026",
+  timeDisplay:"7:00 PM",
+  venueName:"Railway Officer Club, Sealdah",
+  venueAddress:"Kolkata, West Bengal, India",
+  mapSearch:"Railway Officer Club, Sealdah, Kolkata"
+};
+const date=new Date(WEDDING.dateISO);
+document.getElementById("dateDisplay").textContent=WEDDING.dateDisplay;
+document.getElementById("timeDisplay").textContent="At "+WEDDING.timeDisplay;
+document.getElementById("venueName").textContent=WEDDING.venueName;
+document.getElementById("venueAddress").textContent=WEDDING.venueAddress;
+document.getElementById("venueDate").textContent=WEDDING.dateDisplay+" · "+WEDDING.timeDisplay;
+document.getElementById("mapLink").href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(WEDDING.mapSearch);
+function go(id){document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===id));document.querySelectorAll(".nav button").forEach(b=>b.setAttribute("aria-current",b.dataset.page===id?"page":"false"));history.replaceState(null,"","#"+id);window.scrollTo(0,0)}
+document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.page)));
+document.querySelectorAll("[data-next]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.next)));
+function tick(){let s=Math.floor((date.getTime()-Date.now())/1000);if(s<0)s=0;const vals={days:Math.floor(s/86400),hours:Math.floor(s%86400/3600),minutes:Math.floor(s%3600/60),seconds:s%60};Object.entries(vals).forEach(([k,v])=>document.getElementById(k).textContent=String(v).padStart(2,"0"))}
+tick();setInterval(tick,1000);const hash=location.hash.slice(1);if(["welcome","countdown","venue"].includes(hash))go(hash);
+</script>
+</body>
+</html>
