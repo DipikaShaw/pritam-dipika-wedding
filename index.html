@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,13 +21,9 @@
       --rose: #f0d7d1;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -114,12 +111,8 @@
       line-height: .88;
       margin: 26px 0;
       background: linear-gradient(
-        105deg,
-        #fff8e9 15%,
-        #f0d39a 35%,
-        #fffdf5 50%,
-        #d8ad67 65%,
-        #fff4df 82%
+        105deg, #fff8e9 15%, #f0d39a 35%,
+        #fffdf5 50%, #d8ad67 65%, #fff4df 82%
       );
       background-size: 220% auto;
       -webkit-background-clip: text;
@@ -224,12 +217,7 @@
       justify-content: center;
       text-align: center;
       padding: 78px 22px;
-      background: radial-gradient(
-        ellipse at center,
-        #7d2b3b 0%,
-        #511622 55%,
-        #2a0c13 100%
-      );
+      background: radial-gradient(ellipse at center, #7d2b3b 0%, #511622 55%, #2a0c13 100%);
       color: var(--cream);
     }
 
@@ -241,9 +229,7 @@
       margin: 0 0 16px;
     }
 
-    .countdown-section .section-label {
-      color: var(--gold);
-    }
+    .countdown-section .section-label { color: var(--gold); }
 
     .countdown-section h2 {
       color: #fff5e8;
@@ -308,9 +294,7 @@
       color: #351017;
     }
 
-    .details-inner {
-      width: min(620px, 100%);
-    }
+    .details-inner { width: min(620px, 100%); }
 
     .details h2 {
       font-size: clamp(2.7rem, 7vw, 4.7rem);
@@ -382,7 +366,7 @@
       margin-top: 28px;
     }
 
-    /* Background music control */
+    /* Background music button */
     .music-toggle {
       position: fixed;
       z-index: 10;
@@ -432,13 +416,8 @@
     }
 
     @media (max-width: 480px) {
-      .hero {
-        padding: 60px 20px;
-      }
-
-      .hero::after {
-        inset: 9px;
-      }
+      .hero { padding: 60px 20px; }
+      .hero::after { inset: 9px; }
 
       .invitation-message {
         font-size: 1rem;
@@ -446,26 +425,16 @@
         line-height: 1.8;
       }
 
-      .invitation-message::before {
-        font-size: 3.6rem;
-      }
+      .invitation-message::before { font-size: 3.6rem; }
 
       .countdown-grid {
         grid-template-columns: repeat(2, minmax(90px, 125px));
         gap: 10px;
       }
 
-      .countdown-box {
-        padding: 17px 8px;
-      }
-
-      .details {
-        padding: 65px 18px;
-      }
-
-      .scroll-cue {
-        font-size: .95rem;
-      }
+      .countdown-box { padding: 17px 8px; }
+      .details { padding: 65px 18px; }
+      .scroll-cue { font-size: .95rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -478,9 +447,10 @@
 </head>
 
 <body>
-  <!-- Upload your own permitted MP3 file to assets/wedding-song.mp3 -->
-  <audio id="backgroundMusic" loop preload="none">
+  <!-- Music may require the visitor to press Play because of browser restrictions. -->
+  <audio id="backgroundMusic" loop preload="auto" playsinline>
     <source src="assets/wedding-song.mp3" type="audio/mpeg">
+    Your browser does not support audio playback.
   </audio>
 
   <button class="music-toggle" id="musicToggle" type="button"
@@ -489,17 +459,13 @@
   </button>
 
   <main>
-    <!-- Welcome section -->
     <section class="hero" id="welcome">
       <div class="hero-content">
         <div class="flower">❦</div>
         <p class="eyebrow">WITH JOY IN OUR HEARTS, WE INVITE YOU</p>
-
         <h1>Pritam <span>&amp;</span> Dipika</h1>
-
         <p class="script">to celebrate our reception</p>
         <div class="divider"></div>
-
         <p class="event-date">27 NOVEMBER 2026</p>
         <p class="event-time">7:00 PM ONWARDS</p>
 
@@ -518,7 +484,6 @@
       </div>
     </section>
 
-    <!-- Countdown section -->
     <section class="countdown-section" id="countdown">
       <p class="section-label">THE COUNTDOWN BEGINS</p>
       <h2>Until the celebration</h2>
@@ -550,7 +515,6 @@
       </a>
     </section>
 
-    <!-- Venue section -->
     <section class="details" id="venue">
       <div class="details-inner">
         <p class="section-label">LET'S CELEBRATE TOGETHER</p>
@@ -561,7 +525,6 @@
           <div class="venue-flower">✦</div>
           <h3>ROYAL PALACE BANQUET</h3>
           <p class="venue-caption">27 November 2026 · 7:00 PM</p>
-
           <p class="venue-note">
             The map and directions to our reception venue are available here.
             Tap the button below to open the location and plan your route.
@@ -580,7 +543,7 @@
   </main>
 
   <script>
-    // Reception date and countdown
+    // Reception date and countdown (India Standard Time).
     const receptionDate = new Date("2026-11-27T19:00:00+05:30").getTime();
 
     const countdownIds = {
@@ -617,28 +580,30 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // Music controls: browsers may require a visitor to tap Play music.
+    // Music controls.
     const music = document.getElementById("backgroundMusic");
     const musicToggle = document.getElementById("musicToggle");
     const musicLabel = document.getElementById("musicLabel");
 
-    function updateMusicButton(isPlaying) {
+    function updateMusicButton(isPlaying, message) {
       musicToggle.setAttribute("aria-pressed", String(isPlaying));
       musicToggle.setAttribute(
         "aria-label",
         isPlaying ? "Pause background music" : "Play background music"
       );
-      musicLabel.textContent = isPlaying ? "Pause music" : "Play music";
+      musicLabel.textContent =
+        message || (isPlaying ? "Pause music" : "Play music");
     }
 
-    musicToggle.addEventListener("click", async () => {
+    musicToggle.addEventListener("click", async function () {
       if (music.paused) {
         try {
+          // Playback is requested directly from the visitor's click.
           await music.play();
           updateMusicButton(true);
         } catch (error) {
-          updateMusicButton(false);
-          musicLabel.textContent = "Tap to retry";
+          updateMusicButton(false, "Tap to retry");
+          console.error("Background music could not start:", error);
         }
       } else {
         music.pause();
@@ -646,8 +611,22 @@
       }
     });
 
-    music.addEventListener("play", () => updateMusicButton(true));
-    music.addEventListener("pause", () => updateMusicButton(false));
+    music.addEventListener("playing", function () {
+      updateMusicButton(true);
+    });
+
+    music.addEventListener("pause", function () {
+      updateMusicButton(false);
+    });
+
+    music.addEventListener("ended", function () {
+      updateMusicButton(false);
+    });
+
+    music.addEventListener("error", function () {
+      updateMusicButton(false, "Music unavailable");
+      console.error("Could not load assets/wedding-song.mp3");
+    });
   </script>
 </body>
 </html>
